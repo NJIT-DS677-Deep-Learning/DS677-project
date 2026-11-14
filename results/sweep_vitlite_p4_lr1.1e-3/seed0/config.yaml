@@ -1,0 +1,32 @@
+run_name: sweep_vitlite_p4_lr1.1e-3
+model:
+  name: vit_lite
+  patch_size: 4
+data:
+  dir: data
+  val_size: 5000
+  image_size: 32
+  normalize: cifar
+  crop_scale:
+  - 0.8
+  - 1.0
+  randaugment_magnitude: 9
+  num_workers: 4
+train:
+  epochs: 30
+  batch_size: 128
+  eval_batch_size: 512
+  label_smoothing: 0.1
+  mixup_alpha: 0.8
+  cutmix_alpha: 1.0
+  mix_off_epoch: 18
+  eval_every: 5
+  ckpt_every: 25
+  clip_grad: null
+optim:
+  name: adamw
+  lr: 0.0011
+  weight_decay: 0.06
+  warmup_epochs: 1
+  cooldown_epochs: 1
+  min_lr: 1.0e-05

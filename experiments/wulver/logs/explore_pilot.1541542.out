@@ -1,0 +1,181 @@
+== node and allocation
+n0802
+Sat Nov  7 10:55:41 PM EST 2026
+job 1541542, partition course_gpu, cpus 4
+== environment (same checks as the course guide's verify job)
+/course/2026/fall/ds/677/ikoutis/rv44/envs/ds677/bin/python
+  torch         2.15.0+cu132
+  torchvision   0.29.2+cu132
+  transformers  5.22.2
+  datasets      1.1.1
+  yaml          6.0.3
+  sklearn       1.9.1
+  numpy         1.26.4
+  cuda available: True | torch.version.cuda: 13.2
+== nvidia-smi
+Sat Nov  7 22:57:19 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          On  |   00000000:3B:00.0 Off |                   On |
+| N/A   30C    P0             32W /  250W |     249MiB /  40960MiB |     N/A      Default |
+|                                         |                        |              Enabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA A100-PCIE-40GB          On  |   00000000:D8:00.0 Off |                   On |
+| N/A   31C    P0             31W /  250W |     249MiB /  40960MiB |     N/A      Default |
+|                                         |                        |              Enabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| MIG devices:                                                                            |
++------------------+----------------------------------+-----------+-----------------------+
+| GPU  GI  CI  MIG |              Shared Memory-Usage |        Vol|        Shared         |
+|      ID  ID  Dev |                Shared BAR1-Usage | SM     Unc| CE ENC  DEC  OFA  JPG |
+|                  |                                  |        ECC|                       |
+|==================+==================================+===========+=======================|
+|  0    3   0   0  |              71MiB /  9984MiB    | 28      0 |  2   0    1    0    0 |
+|                  |               0MiB /  6105MiB    |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+GPU 0: NVIDIA A100-PCIE-40GB (UUID: GPU-49bba299-ebcd-edba-b551-7417df0bb696)
+  MIG 2g.10gb     Device  0: (UUID: MIG-ec0b0245-2425-5452-a142-333a30f03b14)
+GPU 1: NVIDIA A100-PCIE-40GB (UUID: GPU-c7beb11a-215d-9d5b-eff0-f2f6fe47c8ff)
+== GPU check (device properties and measured matmul throughput)
+{
+ "torch": "2.15.0+cu132",
+ "cuda_available": true,
+ "device_name": "NVIDIA A100-PCIE-40GB MIG 2g.10gb",
+ "total_memory_GB": 10.47,
+ "streaming_multiprocessors": 28,
+ "fraction_of_full_A100_SMs": 0.259,
+ "compute_capability": "8.0",
+ "cuda_runtime": "13.2",
+ "bf16_matmul_TFLOPs": 65.4,
+ "tf32_matmul_TFLOPs": 37.7
+}
+== pilots: 60 training steps per model, same code path as the real runs
+{
+ "run_name": "resnet18",
+ "model": {
+  "name": "resnet18_cifar"
+ },
+ "params": 11173962,
+ "device": "NVIDIA A100-PCIE-40GB MIG 2g.10gb",
+ "batch_size": 128,
+ "timed_steps": 50,
+ "images_per_second": 3878.9,
+ "peak_gpu_memory_GB": 0.47,
+ "epochs_in_config": 300,
+ "estimated_hours_full_run": 1.07
+}
+{
+ "run_name": "vitlite_p8",
+ "model": {
+  "name": "vit_lite",
+  "patch_size": 8
+ },
+ "params": 3746826,
+ "device": "NVIDIA A100-PCIE-40GB MIG 2g.10gb",
+ "batch_size": 128,
+ "timed_steps": 50,
+ "images_per_second": 4677.0,
+ "peak_gpu_memory_GB": 0.21,
+ "epochs_in_config": 300,
+ "estimated_hours_full_run": 0.89
+}
+{
+ "run_name": "vitlite_p4",
+ "model": {
+  "name": "vit_lite",
+  "patch_size": 4
+ },
+ "params": 3722250,
+ "device": "NVIDIA A100-PCIE-40GB MIG 2g.10gb",
+ "batch_size": 128,
+ "timed_steps": 50,
+ "images_per_second": 4615.6,
+ "peak_gpu_memory_GB": 0.57,
+ "epochs_in_config": 300,
+ "estimated_hours_full_run": 0.9
+}
+{
+ "run_name": "vitlite_p2",
+ "model": {
+  "name": "vit_lite",
+  "patch_size": 2
+ },
+ "params": 3762186,
+ "device": "NVIDIA A100-PCIE-40GB MIG 2g.10gb",
+ "batch_size": 128,
+ "timed_steps": 50,
+ "images_per_second": 1576.6,
+ "peak_gpu_memory_GB": 2.06,
+ "epochs_in_config": 300,
+ "estimated_hours_full_run": 2.64
+}
+{
+ "run_name": "vitlite_convstem",
+ "model": {
+  "name": "vit_lite_convstem"
+ },
+ "params": 3858890,
+ "device": "NVIDIA A100-PCIE-40GB MIG 2g.10gb",
+ "batch_size": 128,
+ "timed_steps": 50,
+ "images_per_second": 4182.7,
+ "peak_gpu_memory_GB": 0.65,
+ "epochs_in_config": 300,
+ "estimated_hours_full_run": 1.0
+}
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights:  10%|█         | 20/198 [00:00<00:00, 195.58it/s]Loading weights:  20%|██        | 40/198 [00:00<00:01, 137.96it/s]Loading weights:  28%|██▊       | 55/198 [00:00<00:01, 114.35it/s]Loading weights:  34%|███▍      | 68/198 [00:00<00:01, 91.34it/s] Loading weights:  39%|███▉      | 78/198 [00:00<00:01, 82.66it/s]Loading weights:  46%|████▌     | 91/198 [00:00<00:01, 91.65it/s]Loading weights:  54%|█████▎    | 106/198 [00:01<00:00, 104.42it/s]Loading weights: 100%|██████████| 198/198 [00:01<00:00, 188.32it/s]
+[transformers] [1mViTForImageClassification LOAD REPORT[0m from: google/vit-base-patch16-224-in21k
+Key                 | Status     | 
+--------------------+------------+-
+pooler.dense.bias   | UNEXPECTED | 
+pooler.dense.weight | UNEXPECTED | 
+classifier.bias     | MISSING    | 
+classifier.weight   | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+{
+ "run_name": "vitb16_finetune",
+ "model": {
+  "name": "vit_b16_pretrained",
+  "checkpoint": "google/vit-base-patch16-224-in21k"
+ },
+ "params": 85806346,
+ "device": "NVIDIA A100-PCIE-40GB MIG 2g.10gb",
+ "batch_size": 32,
+ "timed_steps": 50,
+ "images_per_second": 230.7,
+ "peak_gpu_memory_GB": 3.97,
+ "epochs_in_config": 5,
+ "estimated_hours_full_run": 0.3
+}
+== summary
+GPU: NVIDIA A100-PCIE-40GB MIG 2g.10gb, 10.47 GB, 28 SMs (0.259 of a full A100), measured bf16 matmul 65.4 TFLOP/s
+
+| Run | Params (M) | Batch | Images/s (measured) | Peak GPU memory GB (measured) | Epochs | Hours per run (projected) | Runs | Hours total (projected) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| resnet18 | 11.17 | 128 | 3878.9 | 0.47 | 300 | 1.07 | 3 | 3.2 |
+| vitb16_finetune | 85.81 | 32 | 230.7 | 3.97 | 5 | 0.3 | 1 | 0.3 |
+| vitlite_convstem | 3.86 | 128 | 4182.7 | 0.65 | 300 | 1.0 | 3 | 3.0 |
+| vitlite_p2 | 3.76 | 128 | 1576.6 | 2.06 | 300 | 2.64 | 3 | 7.9 |
+| vitlite_p4 | 3.72 | 128 | 4615.6 | 0.57 | 300 | 0.9 | 3 | 2.7 |
+| vitlite_p8 | 3.75 | 128 | 4677.0 | 0.21 | 300 | 0.89 | 3 | 2.7 |
+
+Core total: 16.8 GPU-hours, about 101 SU (4.0% of the 2500 SU allocation)
+Extension total: 3.0 GPU-hours, about 18 SU (0.7% of the 2500 SU allocation)

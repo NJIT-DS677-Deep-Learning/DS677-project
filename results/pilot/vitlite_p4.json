@@ -1,0 +1,15 @@
+{
+ "run_name": "vitlite_p4",
+ "model": {
+  "name": "vit_lite",
+  "patch_size": 4
+ },
+ "params": 3722250,
+ "device": "NVIDIA A100-PCIE-40GB MIG 2g.10gb",
+ "batch_size": 128,
+ "timed_steps": 50,
+ "images_per_second": 4615.6,
+ "peak_gpu_memory_GB": 0.57,
+ "epochs_in_config": 300,
+ "estimated_hours_full_run": 0.9
+}

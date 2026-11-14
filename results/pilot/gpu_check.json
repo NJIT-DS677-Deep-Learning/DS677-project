@@ -1,0 +1,12 @@
+{
+ "torch": "2.15.0+cu132",
+ "cuda_available": true,
+ "device_name": "NVIDIA A100-PCIE-40GB MIG 2g.10gb",
+ "total_memory_GB": 10.47,
+ "streaming_multiprocessors": 28,
+ "fraction_of_full_A100_SMs": 0.259,
+ "compute_capability": "8.0",
+ "cuda_runtime": "13.2",
+ "bf16_matmul_TFLOPs": 65.4,
+ "tf32_matmul_TFLOPs": 37.7
+}

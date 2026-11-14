@@ -1,0 +1,14 @@
+{
+ "run_name": "vitlite_convstem",
+ "model": {
+  "name": "vit_lite_convstem"
+ },
+ "params": 3858890,
+ "device": "NVIDIA A100-PCIE-40GB MIG 2g.10gb",
+ "batch_size": 128,
+ "timed_steps": 50,
+ "images_per_second": 4182.7,
+ "peak_gpu_memory_GB": 0.65,
+ "epochs_in_config": 300,
+ "estimated_hours_full_run": 1.0
+}

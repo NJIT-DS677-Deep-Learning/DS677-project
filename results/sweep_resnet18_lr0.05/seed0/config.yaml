@@ -1,0 +1,33 @@
+run_name: sweep_resnet18_lr0.05
+model:
+  name: resnet18_cifar
+data:
+  dir: data
+  val_size: 5000
+  image_size: 32
+  normalize: cifar
+  crop_scale:
+  - 0.8
+  - 1.0
+  randaugment_magnitude: 9
+  num_workers: 4
+train:
+  epochs: 30
+  batch_size: 128
+  eval_batch_size: 512
+  label_smoothing: 0.1
+  mixup_alpha: 0.8
+  cutmix_alpha: 1.0
+  mix_off_epoch: 18
+  eval_every: 5
+  ckpt_every: 25
+  clip_grad: null
+optim:
+  name: sgd
+  lr: 0.05
+  momentum: 0.9
+  nesterov: true
+  weight_decay: 0.0005
+  warmup_epochs: 1
+  cooldown_epochs: 0
+  min_lr: 0.0

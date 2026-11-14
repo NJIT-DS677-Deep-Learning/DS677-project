@@ -1,0 +1,45 @@
+job 1573411 on n0802: experiments/configs/vitlite_p4.yaml seed 0 run_name=sweep_vitlite_p4_lr1.1e-3 optim.lr=1.1e-3 data.val_size=5000 train.epochs=30 train.mix_off_epoch=18 train.eval_every=5 optim.warmup_epochs=1 optim.cooldown_epochs=1
+GPU 0: NVIDIA A100-PCIE-40GB (UUID: GPU-49bba299-ebcd-edba-b551-7417df0bb696)
+GPU 1: NVIDIA A100-PCIE-40GB (UUID: GPU-c7beb11a-215d-9d5b-eff0-f2f6fe47c8ff)
+  MIG 2g.10gb     Device  0: (UUID: MIG-ff41a3a0-3fd0-5220-93b4-602f7cad50c2)
+sweep_vitlite_p4_lr1.1e-3 seed 0: 3.72M params, 351 steps/epoch, eval on val
+{'epoch': 1, 'lr': 0.0011, 'train_loss': 2.1911, 'epoch_seconds': 25.9, 'images_per_second': 1734.2}
+{'epoch': 2, 'lr': 0.0010965926324195492, 'train_loss': 2.1296, 'epoch_seconds': 10.5, 'images_per_second': 4283.0}
+{'epoch': 3, 'lr': 0.0010863744510913348, 'train_loss': 2.0787, 'epoch_seconds': 10.5, 'images_per_second': 4273.0}
+{'epoch': 4, 'lr': 0.0010694739277300092, 'train_loss': 2.049, 'epoch_seconds': 10.5, 'images_per_second': 4273.5}
+{'epoch': 5, 'lr': 0.0010461035962227529, 'train_loss': 2.0363, 'epoch_seconds': 10.5, 'images_per_second': 4271.0, 'val_acc': 0.4566}
+{'epoch': 6, 'lr': 0.0010165573520480517, 'train_loss': 2.0263, 'epoch_seconds': 10.5, 'images_per_second': 4283.1}
+{'epoch': 7, 'lr': 0.0009812067563695324, 'train_loss': 2.0038, 'epoch_seconds': 10.5, 'images_per_second': 4259.5}
+{'epoch': 8, 'lr': 0.0009404963634387465, 'train_loss': 2.0016, 'epoch_seconds': 10.5, 'images_per_second': 4284.2}
+{'epoch': 9, 'lr': 0.0008949381300675182, 'train_loss': 1.9895, 'epoch_seconds': 10.5, 'images_per_second': 4269.8}
+{'epoch': 10, 'lr': 0.0008451049774739935, 'train_loss': 1.9775, 'epoch_seconds': 10.5, 'images_per_second': 4272.6, 'val_acc': 0.502}
+{'epoch': 11, 'lr': 0.000791623586465905, 'train_loss': 1.9672, 'epoch_seconds': 11.0, 'images_per_second': 4091.4}
+{'epoch': 12, 'lr': 0.0007351665165658047, 'train_loss': 1.9704, 'epoch_seconds': 10.5, 'images_per_second': 4265.8}
+{'epoch': 13, 'lr': 0.0006764437481848415, 'train_loss': 1.95, 'epoch_seconds': 10.6, 'images_per_second': 4239.6}
+{'epoch': 14, 'lr': 0.0006161937542071501, 'train_loss': 1.9503, 'epoch_seconds': 10.5, 'images_per_second': 4285.5}
+{'epoch': 15, 'lr': 0.0005551742132648606, 'train_loss': 1.925, 'epoch_seconds': 10.5, 'images_per_second': 4261.8, 'val_acc': 0.535}
+{'epoch': 16, 'lr': 0.0004941524814896843, 'train_loss': 1.9211, 'epoch_seconds': 10.5, 'images_per_second': 4270.8}
+{'epoch': 17, 'lr': 0.00043389594256432813, 'train_loss': 1.913, 'epoch_seconds': 10.6, 'images_per_second': 4251.6}
+{'epoch': 18, 'lr': 0.00037516235742743624, 'train_loss': 1.9065, 'epoch_seconds': 10.5, 'images_per_second': 4279.3}
+{'epoch': 19, 'lr': 0.00031869033499012494, 'train_loss': 1.5369, 'epoch_seconds': 10.5, 'images_per_second': 4273.1}
+{'epoch': 20, 'lr': 0.0002651900437003744, 'train_loss': 1.5103, 'epoch_seconds': 10.6, 'images_per_second': 4249.3, 'val_acc': 0.5924}
+{'epoch': 21, 'lr': 0.00021533428076274467, 'train_loss': 1.4768, 'epoch_seconds': 10.6, 'images_per_second': 4239.9}
+{'epoch': 22, 'lr': 0.00016975001132316442, 'train_loss': 1.4578, 'epoch_seconds': 10.5, 'images_per_second': 4269.5}
+{'epoch': 23, 'lr': 0.00012901048401844545, 'train_loss': 1.436, 'epoch_seconds': 10.5, 'images_per_second': 4279.8}
+{'epoch': 24, 'lr': 9.362802204206887e-05, 'train_loss': 1.4177, 'epoch_seconds': 10.5, 'images_per_second': 4283.7}
+{'epoch': 25, 'lr': 6.404758038277024e-05, 'train_loss': 1.4036, 'epoch_seconds': 10.8, 'images_per_second': 4144.9, 'val_acc': 0.6382}
+{'epoch': 26, 'lr': 4.0641150257387234e-05, 'train_loss': 1.3903, 'epoch_seconds': 10.5, 'images_per_second': 4271.5}
+{'epoch': 27, 'lr': 2.370308110547379e-05, 'train_loss': 1.3873, 'epoch_seconds': 10.5, 'images_per_second': 4263.2}
+{'epoch': 28, 'lr': 1.3446378974311628e-05, 'train_loss': 1.3756, 'epoch_seconds': 10.5, 'images_per_second': 4273.7}
+{'epoch': 29, 'lr': 1.0000027844277452e-05, 'train_loss': 1.3747, 'epoch_seconds': 10.6, 'images_per_second': 4253.1}
+{'epoch': 30, 'lr': 1e-05, 'train_loss': 1.3755, 'epoch_seconds': 10.5, 'images_per_second': 4295.4, 'val_acc': 0.6418}
+{
+ "run_name": "sweep_vitlite_p4_lr1.1e-3",
+ "seed": 0,
+ "final_val_acc": 0.6418,
+ "params": 3722250,
+ "epochs": 30,
+ "train_hours": 0.092,
+ "peak_gpu_memory_GB": 0.57,
+ "device": "NVIDIA A100-PCIE-40GB MIG 2g.10gb"
+}

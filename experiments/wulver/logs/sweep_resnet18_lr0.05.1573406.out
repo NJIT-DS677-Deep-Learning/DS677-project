@@ -1,0 +1,45 @@
+job 1573406 on n0802: experiments/configs/resnet18.yaml seed 0 run_name=sweep_resnet18_lr0.05 optim.lr=0.05 data.val_size=5000 train.epochs=30 train.mix_off_epoch=18 train.eval_every=5 optim.warmup_epochs=1
+GPU 0: NVIDIA A100-PCIE-40GB (UUID: GPU-49bba299-ebcd-edba-b551-7417df0bb696)
+  MIG 2g.10gb     Device  0: (UUID: MIG-ec0b0245-2425-5452-a142-333a30f03b14)
+GPU 1: NVIDIA A100-PCIE-40GB (UUID: GPU-c7beb11a-215d-9d5b-eff0-f2f6fe47c8ff)
+sweep_resnet18_lr0.05 seed 0: 11.17M params, 351 steps/epoch, eval on val
+{'epoch': 1, 'lr': 0.05, 'train_loss': 2.0928, 'epoch_seconds': 29.9, 'images_per_second': 1503.4}
+{'epoch': 2, 'lr': 0.04985428197716501, 'train_loss': 1.8452, 'epoch_seconds': 11.4, 'images_per_second': 3941.3}
+{'epoch': 3, 'lr': 0.04941717141332672, 'train_loss': 1.7088, 'epoch_seconds': 11.6, 'images_per_second': 3886.5}
+{'epoch': 4, 'lr': 0.0486937918394999, 'train_loss': 1.6707, 'epoch_seconds': 11.5, 'images_per_second': 3904.2}
+{'epoch': 5, 'lr': 0.04769262421979542, 'train_loss': 1.6553, 'epoch_seconds': 11.5, 'images_per_second': 3919.5, 'val_acc': 0.6862}
+{'epoch': 6, 'lr': 0.04642540632917802, 'train_loss': 1.607, 'epoch_seconds': 11.6, 'images_per_second': 3887.6}
+{'epoch': 7, 'lr': 0.044906995138786834, 'train_loss': 1.5786, 'epoch_seconds': 11.7, 'images_per_second': 3849.5}
+{'epoch': 8, 'lr': 0.04315519263153259, 'train_loss': 1.5702, 'epoch_seconds': 11.7, 'images_per_second': 3838.7}
+{'epoch': 9, 'lr': 0.04119053709012456, 'train_loss': 1.5483, 'epoch_seconds': 11.6, 'images_per_second': 3858.0}
+{'epoch': 10, 'lr': 0.03903606230448404, 'train_loss': 1.5367, 'epoch_seconds': 11.9, 'images_per_second': 3776.4, 'val_acc': 0.8258}
+{'epoch': 11, 'lr': 0.03671702752161759, 'train_loss': 1.5072, 'epoch_seconds': 11.7, 'images_per_second': 3853.4}
+{'epoch': 12, 'lr': 0.03426062130404061, 'train_loss': 1.4947, 'epoch_seconds': 11.9, 'images_per_second': 3787.7}
+{'epoch': 13, 'lr': 0.03169564276874056, 'train_loss': 1.4818, 'epoch_seconds': 11.5, 'images_per_second': 3892.4}
+{'epoch': 14, 'lr': 0.02905216394386158, 'train_loss': 1.4608, 'epoch_seconds': 11.6, 'images_per_second': 3884.3}
+{'epoch': 15, 'lr': 0.026361177201669656, 'train_loss': 1.4805, 'epoch_seconds': 11.6, 'images_per_second': 3868.9, 'val_acc': 0.8526}
+{'epoch': 16, 'lr': 0.023654231901324343, 'train_loss': 1.4577, 'epoch_seconds': 11.7, 'images_per_second': 3848.1}
+{'epoch': 17, 'lr': 0.02096306450148848, 'train_loss': 1.4626, 'epoch_seconds': 11.6, 'images_per_second': 3873.0}
+{'epoch': 18, 'lr': 0.018319226479367356, 'train_loss': 1.4257, 'epoch_seconds': 11.6, 'images_per_second': 3861.4}
+{'epoch': 19, 'lr': 0.015753714418486164, 'train_loss': 0.817, 'epoch_seconds': 11.6, 'images_per_second': 3880.1}
+{'epoch': 20, 'lr': 0.013296606602088685, 'train_loss': 0.7931, 'epoch_seconds': 11.6, 'images_per_second': 3863.4, 'val_acc': 0.883}
+{'epoch': 21, 'lr': 0.010976710372767096, 'train_loss': 0.767, 'epoch_seconds': 11.5, 'images_per_second': 3903.1}
+{'epoch': 22, 'lr': 0.008821224392708832, 'train_loss': 0.7474, 'epoch_seconds': 11.4, 'images_per_second': 3933.2}
+{'epoch': 23, 'lr': 0.0068554197642504535, 'train_loss': 0.7223, 'epoch_seconds': 11.5, 'images_per_second': 3901.4}
+{'epoch': 24, 'lr': 0.00510234374930833, 'train_loss': 0.7008, 'epoch_seconds': 11.3, 'images_per_second': 3970.2}
+{'epoch': 25, 'lr': 0.0035825495613049513, 'train_loss': 0.6853, 'epoch_seconds': 11.4, 'images_per_second': 3935.8, 'val_acc': 0.922}
+{'epoch': 26, 'lr': 0.002313855397533604, 'train_loss': 0.667, 'epoch_seconds': 11.4, 'images_per_second': 3936.9}
+{'epoch': 27, 'lr': 0.0013111355370863526, 'train_loss': 0.6562, 'epoch_seconds': 11.4, 'images_per_second': 3940.3}
+{'epoch': 28, 'lr': 0.000586145953531439, 'train_loss': 0.6465, 'epoch_seconds': 11.4, 'images_per_second': 3930.2}
+{'epoch': 29, 'lr': 0.00014738648687174507, 'train_loss': 0.6411, 'epoch_seconds': 11.6, 'images_per_second': 3888.0}
+{'epoch': 30, 'lr': 1.1906922475768412e-09, 'train_loss': 0.6349, 'epoch_seconds': 11.5, 'images_per_second': 3891.7, 'val_acc': 0.9338}
+{
+ "run_name": "sweep_resnet18_lr0.05",
+ "seed": 0,
+ "final_val_acc": 0.9338,
+ "params": 11173962,
+ "epochs": 30,
+ "train_hours": 0.101,
+ "peak_gpu_memory_GB": 0.95,
+ "device": "NVIDIA A100-PCIE-40GB MIG 2g.10gb"
+}

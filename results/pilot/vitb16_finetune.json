@@ -1,0 +1,15 @@
+{
+ "run_name": "vitb16_finetune",
+ "model": {
+  "name": "vit_b16_pretrained",
+  "checkpoint": "google/vit-base-patch16-224-in21k"
+ },
+ "params": 85806346,
+ "device": "NVIDIA A100-PCIE-40GB MIG 2g.10gb",
+ "batch_size": 32,
+ "timed_steps": 50,
+ "images_per_second": 230.7,
+ "peak_gpu_memory_GB": 3.97,
+ "epochs_in_config": 5,
+ "estimated_hours_full_run": 0.3
+}

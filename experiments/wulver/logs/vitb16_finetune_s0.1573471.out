@@ -1,0 +1,32 @@
+job 1573471 on n0802: experiments/configs/vitb16_finetune.yaml seed 0 
+GPU 0: NVIDIA A100-PCIE-40GB (UUID: GPU-49bba299-ebcd-edba-b551-7417df0bb696)
+GPU 1: NVIDIA A100-PCIE-40GB (UUID: GPU-c7beb11a-215d-9d5b-eff0-f2f6fe47c8ff)
+  MIG 1g.10gb     Device  0: (UUID: MIG-f5da7672-bc7a-59f8-a76f-5ec7bcb2bde3)
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights:   5%|▌         | 10/198 [00:00<00:02, 71.33it/s]Loading weights:  12%|█▏        | 24/198 [00:00<00:01, 102.07it/s]Loading weights:  18%|█▊        | 35/198 [00:00<00:03, 45.99it/s] Loading weights:  21%|██        | 42/198 [00:00<00:03, 43.03it/s]Loading weights:  24%|██▍       | 48/198 [00:00<00:03, 46.03it/s]Loading weights:  31%|███▏      | 62/198 [00:01<00:02, 63.26it/s]Loading weights:  35%|███▌      | 70/198 [00:01<00:02, 54.40it/s]Loading weights:  42%|████▏     | 83/198 [00:01<00:01, 62.10it/s]Loading weights:  46%|████▌     | 91/198 [00:01<00:02, 53.24it/s]Loading weights:  49%|████▉     | 97/198 [00:01<00:02, 42.67it/s]Loading weights:  63%|██████▎   | 125/198 [00:02<00:00, 83.72it/s]Loading weights:  69%|██████▉   | 137/198 [00:02<00:00, 75.37it/s]Loading weights:  74%|███████▍  | 147/198 [00:02<00:00, 58.27it/s]Loading weights: 100%|██████████| 198/198 [00:02<00:00, 76.87it/s]
+[transformers] [1mViTForImageClassification LOAD REPORT[0m from: google/vit-base-patch16-224-in21k
+Key                 | Status     | 
+--------------------+------------+-
+pooler.dense.weight | UNEXPECTED | 
+pooler.dense.bias   | UNEXPECTED | 
+classifier.weight   | MISSING    | 
+classifier.bias     | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+vitb16_finetune seed 0: 85.81M params, 1562 steps/epoch, eval on test
+{'epoch': 1, 'lr': 3e-05, 'train_loss': 0.8822, 'epoch_seconds': 329.9, 'images_per_second': 151.5, 'test_acc': 0.9734}
+{'epoch': 2, 'lr': 2.5611933542912572e-05, 'train_loss': 0.1019, 'epoch_seconds': 314.9, 'images_per_second': 158.7, 'test_acc': 0.9831}
+{'epoch': 3, 'lr': 1.5007542235566291e-05, 'train_loss': 0.0389, 'epoch_seconds': 314.9, 'images_per_second': 158.7, 'test_acc': 0.9847}
+{'epoch': 4, 'lr': 4.398732788915891e-06, 'train_loss': 0.0155, 'epoch_seconds': 315.0, 'images_per_second': 158.7, 'test_acc': 0.9875}
+{'epoch': 5, 'lr': 1.896177365123819e-12, 'train_loss': 0.0076, 'epoch_seconds': 315.0, 'images_per_second': 158.7, 'test_acc': 0.9877}
+{
+ "run_name": "vitb16_finetune",
+ "seed": 0,
+ "final_test_acc": 0.9877,
+ "params": 85806346,
+ "epochs": 5,
+ "train_hours": 0.442,
+ "peak_gpu_memory_GB": 3.97,
+ "device": "NVIDIA A100-PCIE-40GB MIG 1g.10gb"
+}

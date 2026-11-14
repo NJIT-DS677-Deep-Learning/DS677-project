@@ -1,0 +1,14 @@
+{
+ "run_name": "resnet18",
+ "model": {
+  "name": "resnet18_cifar"
+ },
+ "params": 11173962,
+ "device": "NVIDIA A100-PCIE-40GB MIG 2g.10gb",
+ "batch_size": 128,
+ "timed_steps": 50,
+ "images_per_second": 3878.9,
+ "peak_gpu_memory_GB": 0.47,
+ "epochs_in_config": 300,
+ "estimated_hours_full_run": 1.07
+}
