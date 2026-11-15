@@ -37,3 +37,26 @@ Choices made during the project, recorded when they were made, so the report can
 ## 2026-11-14: ViT-B/16 replication anchor
 
 The fine-tuned `google/vit-base-patch16-224-in21k` (224 px, 5 epochs, seed 0) reached 98.77% test accuracy, against 98.95% reported by Dosovitskiy et al. (2021) for ViT-B/16 fine-tuned at 384 px: 0.18 points lower, at about 0.44 GPU-hours.
+
+## 2026-11-15: extensions (conv stem and compute-matched 2x2)
+
+**Setup, fixed before the runs** (`experiments/wulver/submit_extensions.sh`). Both runs use the shared recipe and the 2.75e-4 learning rate.
+
+- **Conv stem.** Two stages of (3x3 convolution, ReLU, 3x3 max-pool with stride 2) replace the patch embedding. They produce the same 8x8 grid of 64 tokens as 4x4 patches, so only the tokenizer changes. Each token sees a 13x13-pixel window, and neighbouring tokens overlap.
+- **Compute-matched 2x2.** ViT-Lite-7/2 gets the training FLOPs of ViT-Lite-7/4 at 300 epochs. 2x2 patches cost 2.361 / 0.509 = 4.64 times the forward FLOPs per image (`experiments/measure_cost.py`), and 300 / 4.64 = 64.7, rounded to 65 epochs. The schedule is scaled with it: 2 warmup and 2 cooldown epochs, and Mixup and CutMix off from epoch 38 (the same 175/300 of the way as in the full runs).
+
+**Results** (3 seeds each, final-epoch test accuracy, `results/summary.md`):
+
+| Run | Test accuracy (%) | Forward GFLOPs per image | Train hours per run |
+| --- | --- | --- | --- |
+| ViT-Lite-7/4, 300 epochs | 91.57 ± 0.49 | 0.509 | 1.04 |
+| ViT-Lite-7 + conv stem, 300 epochs | 93.08 ± 0.22 | 0.586 | 1.00 |
+| ViT-Lite-7/2, 300 epochs | 91.71 ± 0.35 | 2.361 | 3.42 |
+| ViT-Lite-7/2, 65 epochs | 78.53 ± 1.02 | 2.361 | 0.67 |
+
+**Limits of the compute-matched run, recorded after seeing its result.**
+
+1. It reuses the 2.75e-4 rate chosen at 300 epochs. The 30-epoch sweep showed that short schedules hurt ViT-Lite badly (75.6% validation accuracy after 30 epochs, 91.2% after 300), so part of its 13.0-point gap to ViT-Lite-7/4 is a short-schedule penalty and not an effect of patch size alone.
+2. The match is in FLOPs, not in time. On the MIG slice the run took 0.67 hours against 1.04 for ViT-Lite-7/4, because the larger matrices of 2x2 patches use the GPU more efficiently. A time-matched run would have about 91 epochs (300 × 1.04 / 3.42).
+
+**Decision.** The report describes this result as "at equal training FLOPs and an unchanged learning rate, 2x2 patches fall far behind 4x4 patches", states both limits, and does not present the gap as the cost of patch size alone.

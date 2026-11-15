@@ -46,7 +46,7 @@ ViT-Lite-7 is the configuration from Hassani et al. (2021): 7 layers, 4 heads, w
 | E. Analysis and outlook | Accuracy against compute, attention distance, layer probes, layer knockout, conv-stem extension |
 
 - **Seeds.** 3 per main run (0, 1, 2), reported as mean and standard deviation.
-- **Recipe.** Shared by every from-scratch model; see `experiments/configs/`. The transformers use the released CCT CIFAR-10 recipe: AdamW at learning rate 5.5e-4 with weight decay 0.06, batch 128, cosine schedule with 10 warmup epochs, RandAugment, Mixup and CutMix, and label smoothing 0.1.
+- **Recipe.** Shared by every from-scratch model; see `experiments/configs/`. The transformers use the released CCT CIFAR-10 recipe: AdamW with weight decay 0.06, batch 128, cosine schedule with 10 warmup epochs, RandAugment, Mixup and CutMix, and label smoothing 0.1. The learning rate is 2.75e-4 instead of the published 5.5e-4, chosen on the validation split (`experiments/decisions.md`).
 - **Test set.** Learning-rate sweeps use only the validation split. Final runs train on all 50,000 images and report the final-epoch test accuracy, never a best epoch.
 
 ## 5. Repository layout
@@ -95,6 +95,10 @@ bash experiments/wulver/submit_core.sh
 # 5. extensions, only after the core runs
 bash experiments/wulver/submit_extensions.sh
 
+# 6. layer analyses for every finished model: attention distance, knockout, probes (one GPU job)
+sbatch experiments/wulver/analysis.sbatch
+cat results/analysis/*.md
+
 # results so far: seeds, mean and std, replication anchor, claim check (also written to results/summary.md)
 python experiments/summarize_results.py
 
@@ -113,8 +117,8 @@ A job that hits its time limit can be submitted again with the same command; `tr
 - [x] Wulver exploration and pilot (`report/wulver_exploration.md`): core plan about 17 GPU-hours, 101 SU
 - [x] Learning-rate sweeps: 30-epoch sweep, then a 300-epoch check on the validation split (`experiments/decisions.md`)
 - [x] Core runs (3 seeds each, `results/summary.md`): ResNet-18 96.10 ± 0.13%; ViT-Lite-7/8 87.96 ± 0.29%, 7/4 91.57 ± 0.49%, 7/2 91.71 ± 0.35%; ViT-B/16 fine-tuned 98.77%. The claim holds at every patch size.
-- [ ] Analyses: attention distance, probes, knockout (scripts ready: `sbatch experiments/wulver/analysis.sbatch`)
-- [ ] Extensions: conv stem, compute-matched 2x2 run
+- [x] Extensions (3 seeds each, `experiments/decisions.md`): conv stem 93.08 ± 0.22%, the best from-scratch ViT and still 3.02 points below ResNet-18; ViT-Lite-7/2 trained for 65 epochs to match the FLOPs of 7/4, 78.53 ± 1.02%.
+- [x] Analyses for every model (`results/analysis/`): attention distance, layer knockout, linear probes
 - [ ] Report, demo notebook, video (Milestone 3, Dec 13)
 
 ## 8. References
