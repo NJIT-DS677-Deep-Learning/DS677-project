@@ -100,13 +100,12 @@ def plot(results, path):
         ax.set_xlim(-0.03, 1.03)
         style_axes(ax)
     axes[0].set_ylabel("Linear probe test accuracy (%)", fontsize=9, color="#5d5c57")
-    handles, labels = [], []
+    seen = {}
     for ax in axes:
         for h, l in zip(*ax.get_legend_handles_labels()):
-            if l not in labels:
-                handles.append(h)
-                labels.append(l)
-    fig.legend(handles, labels, loc="lower center", ncol=3, frameon=False, fontsize=9)
+            seen.setdefault(l, h)
+    order = [MODELS[r][0] for r in MODELS if MODELS[r][0] in seen]  # fixed model order, ResNet-18 first
+    fig.legend([seen[l] for l in order], order, loc="lower center", ncol=3, frameon=False, fontsize=9)
     fig.suptitle("Where class information appears, layer by layer (mean ± std over seeds)",
                  fontsize=11, color="#26251f", x=0.01, ha="left")
     fig.tight_layout(rect=(0, 0.1, 1, 1))
