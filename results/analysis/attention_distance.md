@@ -25,6 +25,13 @@ Averaged over the first 1000 test images, patch tokens only, in original CIFAR p
 | ViT-Lite-7/2 | 5 | 13.2 | 9.3 | 16.3 | 16.7 |
 | ViT-Lite-7/2 | 6 | 14.9 | 13.7 | 16.0 | 16.7 |
 | ViT-Lite-7/2 | 7 | 16.2 | 15.9 | 16.8 | 16.7 |
+| ViT-Lite-7 + conv stem | 1 | 15.2 | 13.4 | 17.8 | 16.5 |
+| ViT-Lite-7 + conv stem | 2 | 12.3 | 9.7 | 15.5 | 16.5 |
+| ViT-Lite-7 + conv stem | 3 | 13.8 | 12.9 | 15.6 | 16.5 |
+| ViT-Lite-7 + conv stem | 4 | 14.3 | 12.0 | 15.5 | 16.5 |
+| ViT-Lite-7 + conv stem | 5 | 14.9 | 14.4 | 15.3 | 16.5 |
+| ViT-Lite-7 + conv stem | 6 | 15.2 | 14.6 | 15.6 | 16.5 |
+| ViT-Lite-7 + conv stem | 7 | 15.6 | 15.1 | 16.0 | 16.5 |
 | ViT-B/16, pretrained + fine-tuned | 1 | 11.2 | 0.0 | 16.5 | 16.6 |
 | ViT-B/16, pretrained + fine-tuned | 2 | 8.4 | 2.6 | 15.5 | 16.6 |
 | ViT-B/16, pretrained + fine-tuned | 3 | 9.3 | 2.9 | 16.3 | 16.6 |

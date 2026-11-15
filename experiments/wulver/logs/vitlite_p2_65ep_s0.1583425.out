@@ -1,0 +1,80 @@
+job 1583425 on n0802: experiments/configs/vitlite_p2.yaml seed 0 run_name=vitlite_p2_65ep train.epochs=65 train.mix_off_epoch=38 optim.warmup_epochs=2 optim.cooldown_epochs=2 train.eval_every=5 train.ckpt_every=5
+GPU 0: NVIDIA A100-PCIE-40GB (UUID: GPU-49bba299-ebcd-edba-b551-7417df0bb696)
+  MIG 2g.10gb     Device  0: (UUID: MIG-6cb0a8ef-b108-54ea-8791-658c332405ca)
+GPU 1: NVIDIA A100-PCIE-40GB (UUID: GPU-c7beb11a-215d-9d5b-eff0-f2f6fe47c8ff)
+vitlite_p2_65ep seed 0: 3.76M params, 390 steps/epoch, eval on test
+{'epoch': 1, 'lr': 0.0001425, 'train_loss': 2.195, 'epoch_seconds': 45.8, 'images_per_second': 1089.7}
+{'epoch': 2, 'lr': 0.000275, 'train_loss': 2.1089, 'epoch_seconds': 32.1, 'images_per_second': 1554.1}
+{'epoch': 3, 'lr': 0.00027482521649574166, 'train_loss': 2.0347, 'epoch_seconds': 32.2, 'images_per_second': 1550.5}
+{'epoch': 4, 'lr': 0.00027429953146070106, 'train_loss': 1.9948, 'epoch_seconds': 32.2, 'images_per_second': 1548.6}
+{'epoch': 5, 'lr': 0.00027342433776178385, 'train_loss': 1.9658, 'epoch_seconds': 32.3, 'images_per_second': 1546.3, 'test_acc': 0.4837}
+{'epoch': 6, 'lr': 0.0002722019562553462, 'train_loss': 1.9459, 'epoch_seconds': 32.3, 'images_per_second': 1547.3}
+{'epoch': 7, 'lr': 0.000270635628477396, 'train_loss': 1.9393, 'epoch_seconds': 32.3, 'images_per_second': 1547.1}
+{'epoch': 8, 'lr': 0.0002687295080476223, 'train_loss': 1.9204, 'epoch_seconds': 32.3, 'images_per_second': 1547.9}
+{'epoch': 9, 'lr': 0.0002664886496547422, 'train_loss': 1.9033, 'epoch_seconds': 32.2, 'images_per_second': 1548.2}
+{'epoch': 10, 'lr': 0.00026391899565237525, 'train_loss': 1.9024, 'epoch_seconds': 32.3, 'images_per_second': 1547.7, 'test_acc': 0.5894}
+{'epoch': 11, 'lr': 0.00026102736030098983, 'train_loss': 1.8869, 'epoch_seconds': 32.2, 'images_per_second': 1548.2}
+{'epoch': 12, 'lr': 0.0002578214116977096, 'train_loss': 1.8662, 'epoch_seconds': 32.3, 'images_per_second': 1547.6}
+{'epoch': 13, 'lr': 0.0002543096514418981, 'train_loss': 1.8579, 'epoch_seconds': 32.3, 'images_per_second': 1547.7}
+{'epoch': 14, 'lr': 0.0002505013920904459, 'train_loss': 1.8456, 'epoch_seconds': 32.2, 'images_per_second': 1549.0}
+{'epoch': 15, 'lr': 0.00024640673246254343, 'train_loss': 1.8269, 'epoch_seconds': 32.2, 'images_per_second': 1548.2, 'test_acc': 0.6083}
+{'epoch': 16, 'lr': 0.00024203653085942838, 'train_loss': 1.8242, 'epoch_seconds': 32.2, 'images_per_second': 1548.8}
+{'epoch': 17, 'lr': 0.00023740237627012254, 'train_loss': 1.8369, 'epoch_seconds': 32.2, 'images_per_second': 1548.4}
+{'epoch': 18, 'lr': 0.00023251655763951632, 'train_loss': 1.8249, 'epoch_seconds': 32.2, 'images_per_second': 1548.1}
+{'epoch': 19, 'lr': 0.00022739203128029618, 'train_loss': 1.8269, 'epoch_seconds': 32.2, 'images_per_second': 1548.0}
+{'epoch': 20, 'lr': 0.00022204238651513236, 'train_loss': 1.7892, 'epoch_seconds': 32.2, 'images_per_second': 1548.0, 'test_acc': 0.6567}
+{'epoch': 21, 'lr': 0.00021648180964023832, 'train_loss': 1.7985, 'epoch_seconds': 32.2, 'images_per_second': 1548.8}
+{'epoch': 22, 'lr': 0.00021072504630586313, 'train_loss': 1.7712, 'epoch_seconds': 32.2, 'images_per_second': 1549.1}
+{'epoch': 23, 'lr': 0.00020478736241347827, 'train_loss': 1.7854, 'epoch_seconds': 32.3, 'images_per_second': 1547.4}
+{'epoch': 24, 'lr': 0.00019868450363335095, 'train_loss': 1.7714, 'epoch_seconds': 32.2, 'images_per_second': 1548.7}
+{'epoch': 25, 'lr': 0.0001924326536498571, 'train_loss': 1.7779, 'epoch_seconds': 32.2, 'images_per_second': 1548.0, 'test_acc': 0.6522}
+{'epoch': 26, 'lr': 0.00018604839124526006, 'train_loss': 1.7487, 'epoch_seconds': 32.2, 'images_per_second': 1548.5}
+{'epoch': 27, 'lr': 0.00017954864633576014, 'train_loss': 1.7753, 'epoch_seconds': 32.3, 'images_per_second': 1547.6}
+{'epoch': 28, 'lr': 0.00017295065507640033, 'train_loss': 1.7443, 'epoch_seconds': 32.2, 'images_per_second': 1548.2}
+{'epoch': 29, 'lr': 0.00016627191415388186, 'train_loss': 1.7535, 'epoch_seconds': 32.2, 'images_per_second': 1548.4}
+{'epoch': 30, 'lr': 0.00015953013438849627, 'train_loss': 1.7331, 'epoch_seconds': 32.2, 'images_per_second': 1548.2, 'test_acc': 0.6782}
+{'epoch': 31, 'lr': 0.00015274319376821385, 'train_loss': 1.7177, 'epoch_seconds': 32.3, 'images_per_second': 1547.6}
+{'epoch': 32, 'lr': 0.00014592909003947364, 'train_loss': 1.7196, 'epoch_seconds': 32.2, 'images_per_second': 1548.3}
+{'epoch': 33, 'lr': 0.00013910589298039508, 'train_loss': 1.7128, 'epoch_seconds': 32.2, 'images_per_second': 1548.2}
+{'epoch': 34, 'lr': 0.00013229169648297506, 'train_loss': 1.7051, 'epoch_seconds': 32.2, 'images_per_second': 1548.1}
+{'epoch': 35, 'lr': 0.0001255045705713389, 'train_loss': 1.7102, 'epoch_seconds': 32.2, 'images_per_second': 1548.1, 'test_acc': 0.7099}
+{'epoch': 36, 'lr': 0.00011876251348328493, 'train_loss': 1.7025, 'epoch_seconds': 32.2, 'images_per_second': 1548.0}
+{'epoch': 37, 'lr': 0.00011208340394219342, 'train_loss': 1.6761, 'epoch_seconds': 32.3, 'images_per_second': 1547.8}
+{'epoch': 38, 'lr': 0.00010548495374586609, 'train_loss': 1.6917, 'epoch_seconds': 32.3, 'images_per_second': 1547.0}
+{'epoch': 39, 'lr': 9.898466079802235e-05, 'train_loss': 1.1666, 'epoch_seconds': 32.1, 'images_per_second': 1555.1}
+{'epoch': 40, 'lr': 9.259976270700449e-05, 'train_loss': 1.1409, 'epoch_seconds': 32.1, 'images_per_second': 1554.8, 'test_acc': 0.7447}
+{'epoch': 41, 'lr': 8.634719107473888e-05, 'train_loss': 1.1197, 'epoch_seconds': 32.1, 'images_per_second': 1555.2}
+{'epoch': 42, 'lr': 8.024352659717165e-05, 'train_loss': 1.1039, 'epoch_seconds': 32.1, 'images_per_second': 1555.6}
+{'epoch': 43, 'lr': 7.430495509524367e-05, 'train_loss': 1.0836, 'epoch_seconds': 32.1, 'images_per_second': 1555.8}
+{'epoch': 44, 'lr': 6.854722459300295e-05, 'train_loss': 1.077, 'epoch_seconds': 32.1, 'images_per_second': 1556.2}
+{'epoch': 45, 'lr': 6.29856035566762e-05, 'train_loss': 1.0619, 'epoch_seconds': 32.1, 'images_per_second': 1555.5, 'test_acc': 0.764}
+{'epoch': 46, 'lr': 5.7634840405441064e-05, 'train_loss': 1.0518, 'epoch_seconds': 32.1, 'images_per_second': 1554.2}
+{'epoch': 47, 'lr': 5.250912440126977e-05, 'train_loss': 1.0443, 'epoch_seconds': 32.1, 'images_per_second': 1555.9}
+{'epoch': 48, 'lr': 4.7622048021557074e-05, 'train_loss': 1.0341, 'epoch_seconds': 32.1, 'images_per_second': 1554.8}
+{'epoch': 49, 'lr': 4.2986570914313923e-05, 'train_loss': 1.0241, 'epoch_seconds': 32.1, 'images_per_second': 1555.2}
+{'epoch': 50, 'lr': 3.8614985531510614e-05, 'train_loss': 1.0155, 'epoch_seconds': 32.1, 'images_per_second': 1556.3, 'test_acc': 0.7681}
+{'epoch': 51, 'lr': 3.4518884531703894e-05, 'train_loss': 1.0049, 'epoch_seconds': 32.1, 'images_per_second': 1555.4}
+{'epoch': 52, 'lr': 3.070913003839061e-05, 'train_loss': 0.9976, 'epoch_seconds': 32.1, 'images_per_second': 1555.9}
+{'epoch': 53, 'lr': 2.719582483560869e-05, 'train_loss': 0.9898, 'epoch_seconds': 32.1, 'images_per_second': 1555.8}
+{'epoch': 54, 'lr': 2.3988285577170243e-05, 'train_loss': 0.9865, 'epoch_seconds': 32.1, 'images_per_second': 1556.0}
+{'epoch': 55, 'lr': 2.1095018080570414e-05, 'train_loss': 0.9794, 'epoch_seconds': 32.1, 'images_per_second': 1555.7, 'test_acc': 0.7812}
+{'epoch': 56, 'lr': 1.8523694771088492e-05, 'train_loss': 0.9743, 'epoch_seconds': 32.1, 'images_per_second': 1554.9}
+{'epoch': 57, 'lr': 1.6281134335895247e-05, 'train_loss': 0.9688, 'epoch_seconds': 32.1, 'images_per_second': 1555.6}
+{'epoch': 58, 'lr': 1.437328364212052e-05, 'train_loss': 0.961, 'epoch_seconds': 32.1, 'images_per_second': 1555.7}
+{'epoch': 59, 'lr': 1.280520196683053e-05, 'train_loss': 0.9653, 'epoch_seconds': 32.1, 'images_per_second': 1555.6}
+{'epoch': 60, 'lr': 1.158104758073463e-05, 'train_loss': 0.9569, 'epoch_seconds': 32.1, 'images_per_second': 1554.7, 'test_acc': 0.7816}
+{'epoch': 61, 'lr': 1.070406672119892e-05, 'train_loss': 0.9545, 'epoch_seconds': 32.1, 'images_per_second': 1555.9}
+{'epoch': 62, 'lr': 1.0176584983808343e-05, 'train_loss': 0.9527, 'epoch_seconds': 32.1, 'images_per_second': 1555.6}
+{'epoch': 63, 'lr': 1.0000001155305243e-05, 'train_loss': 0.9485, 'epoch_seconds': 32.1, 'images_per_second': 1555.7}
+{'epoch': 64, 'lr': 1e-05, 'train_loss': 0.947, 'epoch_seconds': 32.1, 'images_per_second': 1555.5}
+{'epoch': 65, 'lr': 1e-05, 'train_loss': 0.9469, 'epoch_seconds': 32.1, 'images_per_second': 1555.6, 'test_acc': 0.783}
+{
+ "run_name": "vitlite_p2_65ep",
+ "seed": 0,
+ "final_test_acc": 0.783,
+ "params": 3762186,
+ "epochs": 65,
+ "train_hours": 0.585,
+ "peak_gpu_memory_GB": 2.06,
+ "device": "NVIDIA A100-PCIE-40GB MIG 2g.10gb"
+}

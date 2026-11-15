@@ -61,6 +61,22 @@ Logistic regression on frozen features; fitted on 10000 training images, scored 
 | ViT-Lite-7/2 | mean of patch tokens / pooled map | 5 | 78.78 ± 0.98 |
 | ViT-Lite-7/2 | mean of patch tokens / pooled map | 6 | 81.97 ± 1.23 |
 | ViT-Lite-7/2 | mean of patch tokens / pooled map | 7 | 85.21 ± 0.43 |
+| ViT-Lite-7 + conv stem | CLS token | 0 | 10.00 ± 0.00 |
+| ViT-Lite-7 + conv stem | CLS token | 1 | 69.73 ± 0.67 |
+| ViT-Lite-7 + conv stem | CLS token | 2 | 74.80 ± 1.49 |
+| ViT-Lite-7 + conv stem | CLS token | 3 | 80.74 ± 0.48 |
+| ViT-Lite-7 + conv stem | CLS token | 4 | 84.17 ± 0.62 |
+| ViT-Lite-7 + conv stem | CLS token | 5 | 88.64 ± 0.93 |
+| ViT-Lite-7 + conv stem | CLS token | 6 | 92.46 ± 0.45 |
+| ViT-Lite-7 + conv stem | CLS token | 7 | 93.13 ± 0.28 |
+| ViT-Lite-7 + conv stem | mean of patch tokens / pooled map | 0 | 65.06 ± 0.27 |
+| ViT-Lite-7 + conv stem | mean of patch tokens / pooled map | 1 | 73.12 ± 0.64 |
+| ViT-Lite-7 + conv stem | mean of patch tokens / pooled map | 2 | 78.08 ± 0.71 |
+| ViT-Lite-7 + conv stem | mean of patch tokens / pooled map | 3 | 81.46 ± 0.60 |
+| ViT-Lite-7 + conv stem | mean of patch tokens / pooled map | 4 | 84.07 ± 0.07 |
+| ViT-Lite-7 + conv stem | mean of patch tokens / pooled map | 5 | 86.07 ± 0.67 |
+| ViT-Lite-7 + conv stem | mean of patch tokens / pooled map | 6 | 87.60 ± 0.46 |
+| ViT-Lite-7 + conv stem | mean of patch tokens / pooled map | 7 | 88.80 ± 0.48 |
 | ViT-B/16, pretrained + fine-tuned | CLS token | 0 | 10.00 ± 0.00 |
 | ViT-B/16, pretrained + fine-tuned | CLS token | 1 | 53.53 ± 0.00 |
 | ViT-B/16, pretrained + fine-tuned | CLS token | 2 | 64.75 ± 0.00 |

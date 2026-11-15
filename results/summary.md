@@ -38,6 +38,8 @@ Run these on your laptop, then commit, push, and `git pull` on Wulver.
 | ViT-Lite-7/8 | 3/3 | 87.96 ± 0.29 | s0: 88.14, s1: 87.62, s2: 88.11 | 0.95 | 89.10 | -1.14 |
 | ViT-Lite-7/4 | 3/3 | 91.57 ± 0.49 | s0: 91.71, s1: 91.97, s2: 91.02 | 1.04 | 93.57 | -2.00 |
 | ViT-Lite-7/2 | 3/3 | 91.71 ± 0.35 | s0: 91.50, s1: 91.52, s2: 92.11 | 3.42 |  |  |
+| ViT-Lite-7 + conv stem | 3/3 | 93.08 ± 0.22 | s0: 92.93, s1: 92.99, s2: 93.33 | 1.00 |  |  |
+| ViT-Lite-7/2, 65 epochs (compute-matched) | 3/3 | 78.53 ± 1.02 | s0: 78.30, s1: 79.65, s2: 77.65 | 0.67 |  |  |
 | ViT-B/16 pretrained, fine-tuned | 1/1 | 98.77 | s0: 98.77 | 0.44 | 98.95 | -0.18 |
 
 Published numbers: ViT-Lite-7/8: Hassani et al. 2021, ViT-Lite-7/8, 300 epochs; ViT-Lite-7/4: Hassani et al. 2021, ViT-Lite-7/4, 300 epochs; ViT-B/16 pretrained, fine-tuned: Dosovitskiy et al. 2021, ViT-B/16 from ImageNet-21k, fine-tuned at 384 px.
