@@ -111,9 +111,9 @@ A job that hits its time limit can be submitted again with the same command; `tr
 - [x] Instructor meeting (November 6, 2026); claim revised from the feedback
 - [x] Revised claim approved (November 12, 2026)
 - [x] Wulver exploration and pilot (`report/wulver_exploration.md`): core plan about 17 GPU-hours, 101 SU
-- [ ] Learning-rate sweeps
-- [ ] Core runs: ResNet-18, ViT-Lite-7/8, 7/4, 7/2 (3 seeds each), ViT-B/16 fine-tune
-- [ ] Analyses: attention distance, probes, knockout
+- [x] Learning-rate sweeps: 30-epoch sweep, then a 300-epoch check on the validation split (`experiments/decisions.md`)
+- [x] Core runs (3 seeds each, `results/summary.md`): ResNet-18 96.10 ± 0.13%; ViT-Lite-7/8 87.96 ± 0.29%, 7/4 91.57 ± 0.49%, 7/2 91.71 ± 0.35%; ViT-B/16 fine-tuned 98.77%. The claim holds at every patch size.
+- [ ] Analyses: attention distance, probes, knockout (scripts ready: `sbatch experiments/wulver/analysis.sbatch`)
 - [ ] Extensions: conv stem, compute-matched 2x2 run
 - [ ] Report, demo notebook, video (Milestone 3, Dec 13)
 
