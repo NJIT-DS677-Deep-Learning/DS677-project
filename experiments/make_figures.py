@@ -5,7 +5,9 @@
 Reads results/<run>/seed*/metrics.json and log.jsonl, plus the FLOP counts in results/model_cost.json
 (written by experiments/measure_cost.py, which this script runs first if the file is missing).
 Writes results/figures/{claim,compute,curves,per_class}.{png,pdf} and results/figures/figures.md with
-every number shown in the figures. Runs on CPU in seconds; nothing is trained or evaluated.
+every number shown in the figures, plus two explanatory figures: pipeline.{png,pdf} (Figure 1 of the report;
+uses data/cifar10_test.npz when present) and position_embeddings.{png,pdf} (from demo/weights/vitlite_p4).
+Runs on CPU in seconds; nothing is trained or evaluated.
 """
 import json
 import subprocess
@@ -247,6 +249,105 @@ def fig_per_class(runs):
     save(fig, "per_class")
 
 
+def fig_pipeline():
+    """Figure 1: how ViT-Lite-7/4 turns an image into a class, with the conv stem as the alternative tokenizer."""
+    from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
+
+    data = REPO / "data" / "cifar10_test.npz"
+    img = np.load(data)["x"][0] if data.exists() else np.full((32, 32, 3), 180, np.uint8)
+    if img.shape[0] == 3:
+        img = img.transpose(1, 2, 0)
+    green, pink = MODELS["vitlite_p4"][1], MODELS["vitlite_convstem"][1]
+    fig = plt.figure(figsize=(7.4, 3.25))
+    ax = fig.add_axes((0, 0, 1, 1))
+    ax.set_xlim(0, 100)
+    ax.set_ylim(0, 44)
+    ax.axis("off")
+
+    def box(x, y, w, h, text, face="#f4f3ef", edge="#a3a29c", size=7.6, weight="normal"):
+        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.25,rounding_size=0.8", fc=face, ec=edge, lw=0.9))
+        ax.text(x + w / 2, y + h / 2, text, ha="center", va="center", fontsize=size, color=INK, linespacing=1.25,
+                weight=weight)
+
+    def arrow(x0, y0, x1, y1, color=INK2):
+        ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), arrowstyle="-|>", mutation_scale=8, color=color, lw=0.9,
+                                     shrinkA=0, shrinkB=0))
+
+    def picture(x, y, size, grid=None):
+        ax.imshow(img, extent=(x, x + size, y, y + size), interpolation="nearest", zorder=2)
+        if grid:
+            for t in np.linspace(0, size, grid + 1):
+                ax.plot([x + t, x + t], [y, y + size], color="white", lw=0.5, zorder=3)
+                ax.plot([x, x + size], [y + t, y + t], color="white", lw=0.5, zorder=3)
+    ax.set_aspect("auto")
+
+    top, h = 27.0, 12.0
+    picture(1.0, top, h)
+    ax.text(7.0, top - 2.0, "input image\n3 × 32 × 32", ha="center", va="top", fontsize=7.2, color=INK2)
+    arrow(13.6, top + h / 2, 16.2, top + h / 2)
+    picture(16.6, top, h, grid=8)
+    ax.text(22.6, top - 2.0, "64 patches of 4 × 4\n(48 values each)", ha="center", va="top", fontsize=7.2, color=INK2)
+    arrow(29.2, top + h / 2, 31.4, top + h / 2)
+    box(31.8, top + 1.0, 11.0, h - 2.0, "linear\npatch\nembedding\n48 → 256", face="#e3f5ed", edge=green)
+    arrow(43.4, top + h / 2, 45.4, top + h / 2)
+    box(45.8, top + 1.0, 11.6, h - 2.0, "prepend CLS,\nadd position\nembeddings\n65 × 256")
+    arrow(58.0, top + h / 2, 60.0, top + h / 2)
+    ax.add_patch(FancyBboxPatch((60.4, top - 3.0), 23.6, h + 6.0, boxstyle="round,pad=0.25,rounding_size=0.8",
+                                fc="white", ec="#a3a29c", lw=0.9, ls=(0, (3, 2))))
+    ax.text(72.2, top + h + 1.6, "transformer block, × 7", ha="center", va="center", fontsize=7.6, color=INK,
+            weight="bold")
+    box(61.2, top + 5.6, 22.0, 4.6, "LayerNorm, self-attention\nover all 65 tokens (4 heads), +", size=6.7)
+    box(61.2, top - 1.8, 22.0, 4.6, "LayerNorm, MLP 256 → 512 → 256\napplied to each token, +", size=6.7)
+    arrow(72.2, top + 5.4, 72.2, top + 3.2)
+    arrow(84.6, top + h / 2, 86.6, top + h / 2)
+    box(87.0, top + 1.0, 12.2, h - 2.0, "LayerNorm,\nkeep CLS,\nlinear\n256 → 10:\n\"cat\"")
+
+    low, hl = 4.0, 10.0
+    ax.text(1.0, low + hl + 4.6, "Alternative tokenizer: the conv stem (replaces the patches and the linear embedding)",
+            fontsize=7.6, color=INK, weight="bold", va="center")
+    picture(1.0, low, hl)
+    arrow(11.6, low + hl / 2, 14.4, low + hl / 2, color=pink)
+    box(14.8, low + 0.8, 16.6, hl - 1.6, "3×3 conv 3 → 64,\nReLU, 3×3 max-pool\nstride 2: 16 × 16", face="#fbe9f1", edge=pink)
+    arrow(32.0, low + hl / 2, 34.6, low + hl / 2, color=pink)
+    box(35.0, low + 0.8, 16.6, hl - 1.6, "3×3 conv 64 → 256,\nReLU, 3×3 max-pool\nstride 2: 8 × 8", face="#fbe9f1", edge=pink)
+    arrow(52.2, low + hl / 2, 54.6, low + hl / 2, color=pink)
+    ax.text(55.0, low + hl / 2, "64 tokens of 256 values;\neach sees an overlapping\n13 × 13 pixel window", fontsize=7.2,
+            color=INK2, va="center")
+    arrow(51.6, low + hl - 0.2, 51.6, top + 0.6, color=pink)
+    save(fig, "pipeline")
+
+
+def fig_position_embeddings():
+    """Cosine similarity between the learned position embeddings of ViT-Lite-7/4 (seed 0)."""
+    from safetensors.numpy import load_file
+
+    weights = REPO / "demo" / "weights" / "vitlite_p4.safetensors"
+    if not weights.exists():
+        print("skipping position_embeddings: run experiments/export_weights.py first")
+        return
+    state = load_file(str(weights))
+    key = next(k for k in state if k.endswith("embeddings.position_embeddings"))
+    pos = state[key][0, 1:].astype(np.float64)  # (64, 256), CLS position dropped
+    pos /= np.linalg.norm(pos, axis=1, keepdims=True)
+    sim = pos @ pos.T
+    fig, axes = plt.subplots(8, 8, figsize=(5.0, 4.6))
+    for i, a in enumerate(axes.flat):
+        im = a.imshow(sim[i].reshape(8, 8), cmap="RdBu_r", vmin=-1, vmax=1)
+        a.set_xticks([])
+        a.set_yticks([])
+        for side in a.spines.values():
+            side.set_linewidth(0.4)
+            side.set_color("#8a8984")
+    fig.subplots_adjust(left=0.02, right=0.78, top=0.88, bottom=0.03, wspace=0.12, hspace=0.12)
+    cax = fig.add_axes((0.81, 0.2, 0.025, 0.55))
+    cb = fig.colorbar(im, cax=cax)
+    cb.set_label("cosine similarity", fontsize=8, color=INK2)
+    cb.ax.tick_params(labelsize=7)
+    fig.suptitle("Each small map: one patch position's learned embedding\ncompared with all 64 positions (ViT-Lite-7/4)",
+                 x=0.4, fontsize=9, color=INK)
+    save(fig, "position_embeddings")
+
+
 def save(fig, name):
     OUT.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUT / f"{name}.png", dpi=200, facecolor="white")
@@ -309,8 +410,10 @@ def main():
     fig_compute(runs)
     fig_curves(runs)
     fig_per_class(runs)
+    fig_pipeline()
+    fig_position_embeddings()
     write_tables(runs)
-    print(f"wrote {OUT}/{{claim,compute,curves,per_class}}.{{png,pdf}} and figures.md")
+    print(f"wrote {OUT}/{{claim,compute,curves,per_class,pipeline,position_embeddings}}.{{png,pdf}} and figures.md")
 
 
 if __name__ == "__main__":

@@ -62,7 +62,7 @@ experiments/configs/              one YAML per model
 experiments/prepare_data.py       downloads CIFAR-10 (and caches the ViT-B/16 checkpoint)
 experiments/measure_cost.py       parameter and FLOP counts in section 3
 experiments/summarize_results.py  sweep choice, seed statistics, anchor and claim check
-experiments/make_figures.py       main-results figures (results/figures/)
+experiments/make_figures.py       main-results figures and report diagrams (results/figures/)
 experiments/export_weights.py     seed-0 weights for the demo (demo/weights/)
 experiments/wulver/               environment, job scripts, submission scripts, logs
 demo/                             self-contained demo notebook and its weights
@@ -129,7 +129,8 @@ A job that hits its time limit can be submitted again with the same command; `tr
 - [x] Analyses for every model (`results/analysis/`): attention distance, layer knockout, linear probes
 - [x] Main-results figures (`results/figures/`, numbers in `results/figures/figures.md`)
 - [x] Demo notebook (`demo/demo.ipynb`), executed on Wulver: exported weights reproduce every seed-0 run's test accuracy within 0.04 points, ViT-B/16 included
-- [ ] Report (outline in `report/outline.md`) and video (Milestone 3, Dec 13)
+- [x] Report draft (`report/main.pdf`, source `report/main.tex`); video link to add on page 1
+- [ ] Video presentation and Canvas submission (Milestone 3, Dec 13)
 
 ## 8. References
 
