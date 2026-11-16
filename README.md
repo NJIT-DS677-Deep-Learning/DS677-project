@@ -129,7 +129,7 @@ A job that hits its time limit can be submitted again with the same command; `tr
 - [x] Analyses for every model (`results/analysis/`): attention distance, layer knockout, linear probes
 - [x] Main-results figures (`results/figures/`, numbers in `results/figures/figures.md`)
 - [x] Demo notebook (`demo/demo.ipynb`), executed on Wulver: exported weights reproduce every seed-0 run's test accuracy within 0.04 points, ViT-B/16 included
-- [x] Report draft (`report/main.pdf`, source `report/main.tex`); video link to add on page 1
+- [x] Report draft (`report/DS677-Rishabh-Verma-ViT-Patch-Size-Study.pdf`, source `report/DS677-Rishabh-Verma-ViT-Patch-Size-Study.tex`); video link to add on page 1
 - [ ] Video presentation and Canvas submission (Milestone 3, Dec 13)
 
 ## 8. References
