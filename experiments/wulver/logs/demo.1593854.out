@@ -1,0 +1,35 @@
+GPU 0: NVIDIA A100-PCIE-40GB (UUID: GPU-49bba299-ebcd-edba-b551-7417df0bb696)
+  MIG 2g.10gb     Device  0: (UUID: MIG-ec0b0245-2425-5452-a142-333a30f03b14)
+GPU 1: NVIDIA A100-PCIE-40GB (UUID: GPU-c7beb11a-215d-9d5b-eff0-f2f6fe47c8ff)
+Available kernels:
+  python3    /course/2026/fall/ds/677/ikoutis/rv44/envs/ds677/share/jupyter/kernels/python3
+== export weights
+resnet18: 22.4 MB, run's final test accuracy 0.9625
+vitlite_p8: 7.5 MB, run's final test accuracy 0.8814
+vitlite_p4: 7.5 MB, run's final test accuracy 0.9171
+vitlite_p2: 7.5 MB, run's final test accuracy 0.9150
+vitlite_convstem: 7.7 MB, run's final test accuracy 0.9293
+wrote /mmfs1/course/2026/fall/ds/677/ikoutis/rv44/DS677-project/demo/weights/manifest.json
+== execute the demo notebook
+[NbConvertApp] Converting notebook demo/demo.ipynb to notebook
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[NbConvertApp] Writing 595813 bytes to demo/demo.ipynb
+== done
+demo:
+total 4
+drwxr-xr-x 3 rv44 rv44   4096 Nov 15 21:36 .
+drwxr-xr-x 9 rv44 rv44   4096 Nov 15 21:30 ..
+-rw-r--r-- 1 rv44 rv44 595813 Nov 15 21:39 demo.ipynb
+-rw-r--r-- 1 rv44 rv44   2309 Nov 15 21:30 README.md
+drwxr-xr-x 2 rv44 rv44   4096 Nov 15 21:36 weights
+
+demo/weights:
+total 51587
+drwxr-xr-x 2 rv44 rv44     4096 Nov 15 21:36 .
+drwxr-xr-x 3 rv44 rv44     4096 Nov 15 21:36 ..
+-rw-r--r-- 1 rv44 rv44     2801 Nov 15 21:36 manifest.json
+-rw------- 1 rv44 rv44 22378052 Nov 15 21:36 resnet18.safetensors
+-rw------- 1 rv44 rv44  7730132 Nov 15 21:36 vitlite_convstem.safetensors
+-rw------- 1 rv44 rv44  7536700 Nov 15 21:36 vitlite_p2.safetensors
+-rw------- 1 rv44 rv44  7456820 Nov 15 21:36 vitlite_p4.safetensors
+-rw------- 1 rv44 rv44  7505980 Nov 15 21:36 vitlite_p8.safetensors

@@ -1,0 +1,136 @@
+{
+ "seed": 0,
+ "dtype": "float16",
+ "transformers_version": "5.22.2",
+ "torch_version": "2.15.0+cu132",
+ "runs": {
+  "resnet18": {
+   "file": "resnet18.safetensors",
+   "bytes": 22378052,
+   "sha256": "2829a3224425c952549e095c385fc2f44511e1c73b332f5134559c3b484d28de",
+   "params": 11173962,
+   "final_test_acc": 0.9625,
+   "train_hours": 1.081,
+   "config": {
+    "model": {
+     "name": "resnet18_cifar"
+    },
+    "data": {
+     "dir": "data",
+     "val_size": 0,
+     "image_size": 32,
+     "normalize": "cifar",
+     "crop_scale": [
+      0.8,
+      1.0
+     ],
+     "randaugment_magnitude": 9,
+     "num_workers": 4
+    }
+   }
+  },
+  "vitlite_p8": {
+   "file": "vitlite_p8.safetensors",
+   "bytes": 7505980,
+   "sha256": "8c212be7f31083c8e45542d328c179bb09091a246673dfb5319deabe32ed7bf0",
+   "params": 3746826,
+   "final_test_acc": 0.8814,
+   "train_hours": 0.956,
+   "config": {
+    "model": {
+     "name": "vit_lite",
+     "patch_size": 8
+    },
+    "data": {
+     "dir": "data",
+     "val_size": 0,
+     "image_size": 32,
+     "normalize": "cifar",
+     "crop_scale": [
+      0.8,
+      1.0
+     ],
+     "randaugment_magnitude": 9,
+     "num_workers": 4
+    }
+   }
+  },
+  "vitlite_p4": {
+   "file": "vitlite_p4.safetensors",
+   "bytes": 7456820,
+   "sha256": "19eeec6714d36a031041d502f75b6678835955bd17b50fe701204d6389e7961f",
+   "params": 3722250,
+   "final_test_acc": 0.9171,
+   "train_hours": 0.986,
+   "config": {
+    "model": {
+     "name": "vit_lite",
+     "patch_size": 4
+    },
+    "data": {
+     "dir": "data",
+     "val_size": 0,
+     "image_size": 32,
+     "normalize": "cifar",
+     "crop_scale": [
+      0.8,
+      1.0
+     ],
+     "randaugment_magnitude": 9,
+     "num_workers": 4
+    }
+   }
+  },
+  "vitlite_p2": {
+   "file": "vitlite_p2.safetensors",
+   "bytes": 7536700,
+   "sha256": "ba8de67b134a6f4565969ed1015f2da0dc75ddb6926ae7ef48a47c4b46432249",
+   "params": 3762186,
+   "final_test_acc": 0.915,
+   "train_hours": 3.8,
+   "config": {
+    "model": {
+     "name": "vit_lite",
+     "patch_size": 2
+    },
+    "data": {
+     "dir": "data",
+     "val_size": 0,
+     "image_size": 32,
+     "normalize": "cifar",
+     "crop_scale": [
+      0.8,
+      1.0
+     ],
+     "randaugment_magnitude": 9,
+     "num_workers": 4
+    }
+   }
+  },
+  "vitlite_convstem": {
+   "file": "vitlite_convstem.safetensors",
+   "bytes": 7730132,
+   "sha256": "b0ef0869d2659a23f15f429610f7c535e861d779b8e217e106d349fd7d691e4d",
+   "params": 3858890,
+   "final_test_acc": 0.9293,
+   "train_hours": 1.006,
+   "config": {
+    "model": {
+     "name": "vit_lite_convstem"
+    },
+    "data": {
+     "dir": "data",
+     "val_size": 0,
+     "image_size": 32,
+     "normalize": "cifar",
+     "crop_scale": [
+      0.8,
+      1.0
+     ],
+     "randaugment_magnitude": 9,
+     "num_workers": 4
+    }
+   }
+  }
+ }
+}
