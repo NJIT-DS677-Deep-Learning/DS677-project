@@ -1,0 +1,51 @@
+[
+ {
+  "model": "ResNet-18 (CIFAR stem)",
+  "input": "32x32",
+  "tokens": null,
+  "params_M": 11.17,
+  "forward_GFLOPs": 1.111
+ },
+ {
+  "model": "ViT-Lite-7/8",
+  "input": "32x32",
+  "tokens": 17,
+  "params_M": 3.75,
+  "forward_GFLOPs": 0.128
+ },
+ {
+  "model": "ViT-Lite-7/4",
+  "input": "32x32",
+  "tokens": 65,
+  "params_M": 3.72,
+  "forward_GFLOPs": 0.509
+ },
+ {
+  "model": "ViT-Lite-7/2",
+  "input": "32x32",
+  "tokens": 257,
+  "params_M": 3.76,
+  "forward_GFLOPs": 2.361
+ },
+ {
+  "model": "ViT-Lite-7/1 (pixels, not planned)",
+  "input": "32x32",
+  "tokens": 1025,
+  "params_M": 3.96,
+  "forward_GFLOPs": 15.056
+ },
+ {
+  "model": "ViT-Lite-7 + conv stem",
+  "input": "32x32",
+  "tokens": 65,
+  "params_M": 3.86,
+  "forward_GFLOPs": 0.586
+ },
+ {
+  "model": "ViT-B/16 (pretrained architecture), 224 px",
+  "input": "224x224",
+  "tokens": 197,
+  "params_M": 85.81,
+  "forward_GFLOPs": 35.126
+ }
+]

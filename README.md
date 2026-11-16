@@ -62,8 +62,10 @@ experiments/configs/              one YAML per model
 experiments/prepare_data.py       downloads CIFAR-10 (and caches the ViT-B/16 checkpoint)
 experiments/measure_cost.py       parameter and FLOP counts in section 3
 experiments/summarize_results.py  sweep choice, seed statistics, anchor and claim check
+experiments/make_figures.py       main-results figures (results/figures/)
+experiments/export_weights.py     seed-0 weights for the demo (demo/weights/)
 experiments/wulver/               environment, job scripts, submission scripts, logs
-demo/                             self-contained demo notebook (Milestone 3)
+demo/                             self-contained demo notebook and its weights
 ```
 
 ## 6. How to run on Wulver
@@ -99,6 +101,12 @@ bash experiments/wulver/submit_extensions.sh
 sbatch experiments/wulver/analysis.sbatch
 cat results/analysis/*.md
 
+# 7. main-results figures (CPU, seconds; also runs on a laptop from the committed results)
+python experiments/make_figures.py
+
+# 8. demo: export the seed-0 weights and execute demo/demo.ipynb in place (one short GPU job)
+sbatch experiments/wulver/demo.sbatch
+
 # results so far: seeds, mean and std, replication anchor, claim check (also written to results/summary.md)
 python experiments/summarize_results.py
 
@@ -119,7 +127,9 @@ A job that hits its time limit can be submitted again with the same command; `tr
 - [x] Core runs (3 seeds each, `results/summary.md`): ResNet-18 96.10 ± 0.13%; ViT-Lite-7/8 87.96 ± 0.29%, 7/4 91.57 ± 0.49%, 7/2 91.71 ± 0.35%; ViT-B/16 fine-tuned 98.77%. The claim holds at every patch size.
 - [x] Extensions (3 seeds each, `experiments/decisions.md`): conv stem 93.08 ± 0.22%, the best from-scratch ViT and still 3.02 points below ResNet-18; ViT-Lite-7/2 trained for 65 epochs to match the FLOPs of 7/4, 78.53 ± 1.02%.
 - [x] Analyses for every model (`results/analysis/`): attention distance, layer knockout, linear probes
-- [ ] Report, demo notebook, video (Milestone 3, Dec 13)
+- [x] Main-results figures (`results/figures/`, numbers in `results/figures/figures.md`)
+- [ ] Demo notebook (`demo/demo.ipynb`): written and tested; to be executed on Wulver with the trained weights
+- [ ] Report (outline in `report/outline.md`) and video (Milestone 3, Dec 13)
 
 ## 8. References
 
