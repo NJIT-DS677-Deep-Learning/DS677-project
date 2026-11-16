@@ -128,7 +128,7 @@ A job that hits its time limit can be submitted again with the same command; `tr
 - [x] Extensions (3 seeds each, `experiments/decisions.md`): conv stem 93.08 ± 0.22%, the best from-scratch ViT and still 3.02 points below ResNet-18; ViT-Lite-7/2 trained for 65 epochs to match the FLOPs of 7/4, 78.53 ± 1.02%.
 - [x] Analyses for every model (`results/analysis/`): attention distance, layer knockout, linear probes
 - [x] Main-results figures (`results/figures/`, numbers in `results/figures/figures.md`)
-- [ ] Demo notebook (`demo/demo.ipynb`): written and tested; to be executed on Wulver with the trained weights
+- [x] Demo notebook (`demo/demo.ipynb`), executed on Wulver: exported weights reproduce every seed-0 run's test accuracy within 0.04 points, ViT-B/16 included
 - [ ] Report (outline in `report/outline.md`) and video (Milestone 3, Dec 13)
 
 ## 8. References

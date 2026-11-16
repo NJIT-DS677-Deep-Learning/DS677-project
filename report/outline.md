@@ -41,6 +41,7 @@ Rubric: accuracy and clarity of the architecture description, quality of the com
 - **The conv stem:** two (3x3 conv, ReLU, 3x3 max-pool with stride 2) stages giving the same 64 tokens as 4x4 patches. Each token sees an overlapping 13x13 window.
 - **ViT-B/16:** pretrained on ImageNet-21k, the reference for what pretraining buys.
 - **Figure 1 (to draw):** a pipeline diagram, image to patches to tokens to 7 blocks to the CLS token to logits, with the conv stem as an alternative tokenizer. It can reuse the shapes printed in the demo notebook, section 2.
+- **What the patch embedding learns** (optional Figure 9, from the demo notebook, section 2, step 3): ViT-Lite-7/4's position embeddings, with nothing telling the model the patches form a grid, come out most similar to their neighbours on the 8x8 grid. This reproduces the pattern Dosovitskiy et al. (2021) show for ViT, and is a good picture for the video.
 
 **1.3 Related work**, grouped by how each paper attacks the ViT's data hunger (all checked on arXiv):
 - **Scale and recipes.**
@@ -210,6 +211,7 @@ Rubric: evidence-based verdict on the claim, insight into where the model breaks
 | Figure 6 | Mean attention distance by layer | `results/analysis/attention_distance.png` | done |
 | Figure 7 | Layer knockout | `results/analysis/knockout.png` | done |
 | Figure 8 | Linear probes by layer | `results/analysis/probes.png` | done |
+| Figure 9 (optional) | Similarity of learned position embeddings | `demo/demo.ipynb`, section 2, step 3 | done |
 | Tables 1 to 3 | Models; learning-rate selection; replication anchors | numbers above | done |
 
 ## 7. Video (mini-lecture; it should closely follow the report)
