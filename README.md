@@ -6,6 +6,10 @@
 
 DS 677 Deep Learning, Fall 2026. Model Review and Demo track. Rishabh Verma (solo project).
 
+- **Video presentation:** https://youtu.be/Y0W7U8WjlfM
+- **Report:** [`report/DS677-Rishabh-Verma-ViT-Patch-Size-Study.pdf`](report/DS677-Rishabh-Verma-ViT-Patch-Size-Study.pdf)
+- **Demo notebook:** [`demo/demo.ipynb`](demo/demo.ipynb) (runs on Google Colab)
+
 ## 1. What this project asks
 
 A Vision Transformer (ViT) cuts an image into square patches and treats each patch like a word. Unlike a CNN, it has no built-in preference for nearby pixels, so it has to learn locality from data. With millions of pretraining images it does. With CIFAR-10's 50,000 training images, it is much harder.
@@ -129,8 +133,9 @@ A job that hits its time limit can be submitted again with the same command; `tr
 - [x] Analyses for every model (`results/analysis/`): attention distance, layer knockout, linear probes
 - [x] Main-results figures (`results/figures/`, numbers in `results/figures/figures.md`)
 - [x] Demo notebook (`demo/demo.ipynb`), executed on Wulver: exported weights reproduce every seed-0 run's test accuracy within 0.04 points, ViT-B/16 included
-- [x] Report draft (`report/DS677-Rishabh-Verma-ViT-Patch-Size-Study.pdf`, source `report/DS677-Rishabh-Verma-ViT-Patch-Size-Study.tex`); video link to add on page 1
-- [ ] Video presentation and Canvas submission (Milestone 3, Dec 13)
+- [x] Report (`report/DS677-Rishabh-Verma-ViT-Patch-Size-Study.pdf`, source `report/DS677-Rishabh-Verma-ViT-Patch-Size-Study.tex`), with the repository and video links on page 1
+- [x] Video presentation: https://youtu.be/Y0W7U8WjlfM
+- [ ] Canvas submission: report PDF, and the video and report link on the discussion thread (Milestone 3, Dec 13)
 
 ## 8. References
 
